@@ -1,0 +1,2 @@
+module AmazonViewer {
+}
