@@ -1,8 +1,10 @@
 package com.lyamtorres.amazonviewer.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.function.Consumer;
 
-public class Book extends Publication {
+public class Book extends Publication implements IVisualizable {
 
 	private int id;
 	private String isbn;
@@ -52,5 +54,22 @@ public class Book extends Publication {
 		   "\n Editorial: " + getEditorial() +
 		   "\n Authors: " + getAuthors() +
 		   "\n Isbn: " + getIsbn();	   
-	}	
+	}
+
+	@Override
+	public Date startToSee(Date dateI) {
+		// TODO Auto-generated method stub
+		return dateI;
+	}
+
+	@Override
+	public void stopToSee(Date dateI, Date dateF) {
+		// TODO Auto-generated method stub
+		int seconds = dateF.getSeconds() - dateI.getSeconds();
+		if (dateF.getSeconds() > dateI.getSeconds()) {
+			setTimeReading(dateF.getSeconds() - dateI.getSeconds());
+		} else {
+			setTimeReading(0);
+		}
+	}
 }
